@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started — TSR Player's Handbook</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+
+  <nav class="topnav">
+    <div class="nav-brand">
+      <span class="brand-tsr">TSR</span>
+      <span class="brand-sub">The Silver Road</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="getting-started.html" class="active">Getting Started</a></li>
+      <li><a href="combat.html">Combat</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="boons.html">Boons</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>›</span> Getting Started
+    </div>
+
+    <div class="page-hero">
+      <p class="page-eyebrow">Chapter I</p>
+      <h1 class="page-title">Getting Started</h1>
+      <p class="page-lead">Build your character from the ground up — attributes, stats, skills, and everything in between.</p>
+    </div>
+
+    <nav class="toc">
+      <h4>Contents</h4>
+      <ul>
+        <li><a href="#attributes">Attributes</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#skills-overview">Skills Overview</a></li>
+        <li><a href="#roles">Combat Roles</a></li>
+        <li><a href="#character-sheet">Character Sheet</a></li>
+        <li><a href="#leveling">Leveling Up</a></li>
+        <li><a href="#step-by-step">Step-by-Step Creation</a></li>
+      </ul>
+    </nav>
+
+    <!-- Attributes -->
+    <section class="content-section" id="attributes">
+      <h2>Attributes</h2>
+      <p>Attributes are your core resource pools used to cast spells, perform techniques, and survive combat. All characters begin with the same base and spend additional Attribute Points to customize their build.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-name">Health (HP)</div>
+          <div class="stat-desc">Determines how much damage you can take before going <strong>Downed</strong>. At 0 HP you cannot act and suffer a Wound (−5 Max HP until rested).</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Stamina</div>
+          <div class="stat-desc">Fuels physical Techniques, dodges, blocks, and attack enhancers. At 0 Stamina you lose 1 Action per turn until you recover at least 1 point.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Mana</div>
+          <div class="stat-desc">Required to cast Spells and fuel magical abilities. At 0 Mana you suffer <strong>Manashock</strong>, removing magical self-buffs and dispelling active summons.</div>
+        </div>
+      </div>
+
+      <table class="styled-table">
+        <thead>
+          <tr><th>Resource</th><th>Starting Value</th><th>Slot Cost (Spells/Techniques)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Health</td><td>20 HP</td><td>—</td></tr>
+          <tr><td>Stamina</td><td>10</td><td>Technique slots = max Stamina</td></tr>
+          <tr><td>Mana</td><td>0</td><td>Spell slots = max Mana</td></tr>
+          <tr><td>Attribute Points</td><td>+20 to distribute</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Novice Spells</strong> cost 2 Mana · <strong>Adept</strong> cost 4 Mana · <strong>Master</strong> cost 8 Mana. Slot costs follow the same 2 / 3 / 4 progression.
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="content-section" id="stats">
+      <h2>Stats</h2>
+      <p>Stats govern your combat effectiveness across five pillars. Every character starts with a <strong>d4</strong> in each stat, and 6 Stat Points to increase them. Each point raises the die by one step.</p>
+
+      <div class="dice-chain">
+        <span class="die">d4</span>
+        <span style="color:var(--gold-dim); align-self:center;">→</span>
+        <span class="die">d6</span>
+        <span style="color:var(--gold-dim); align-self:center;">→</span>
+        <span class="die">d8</span>
+        <span style="color:var(--gold-dim); align-self:center;">→</span>
+        <span class="die">d10</span>
+        <span style="color:var(--gold-dim); align-self:center;">→</span>
+        <span class="die">d12</span>
+        <span style="color:var(--gold-dim); align-self:center;">→</span>
+        <span class="die">d12+1</span>
+        <span style="color:var(--gold-dim); align-self:center;">→ … →</span>
+        <span class="die">d12+5</span>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-name">Strength</div>
+          <div class="stat-desc">Physical weapon damage. Required to wield heavy weapons. Used to apply physical crowd control (vs. opponent's Vigor).</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Dexterity</div>
+          <div class="stat-desc">Accuracy for attacks. Determines <strong>Parry</strong> = 2 + Half Dex. Higher Dex = harder to hit you.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Vigor</div>
+          <div class="stat-desc">Durability and <strong>Armor</strong> = Half Vigor − 2. Each upgrade adds +5 to HP and Damage Shield cap. Resists physical CC.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Mind</div>
+          <div class="stat-desc">Spell accuracy and spell damage. Also increases <strong>Spell Range</strong> by +1 per point (base 2).</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">Willpower</div>
+          <div class="stat-desc"><strong>Ward</strong> = Half Willpower − 2. Resists magical CC. Also increases Spell Range +1 per point (base 2).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Overview -->
+    <section class="content-section" id="skills-overview">
+      <h2>Skills Overview</h2>
+      <p>Skills are your character's specializations — think RPG skill trees. You begin with <strong>3 Skill Points</strong>. Each point raises a skill one rank: Novice (1), Adept (2), Master (3). Higher ranks unlock better Spells and Techniques.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Category</th><th>Skills</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Physical</strong></td><td>Close Quarters Combat · Marksmanship · Endurance · Martial Arts · Tactics · Savagery</td></tr>
+          <tr><td><strong>Magic</strong></td><td>Spellcrafting · Anima · Figment · Dark · Holy · Void · Thaumaturgy · Nature</td></tr>
+          <tr><td><strong>Crafting</strong></td><td>Artificing (Coming Soon)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Technique Slots</strong> = your max Stamina. <strong>Spell Slots</strong> = your max Mana. Rank costs: Novice = 2 slots · Adept = 3 slots · Master = 4 slots.
+      </div>
+    </section>
+
+    <!-- Roles -->
+    <section class="content-section" id="roles">
+      <h2>Combat Roles</h2>
+      <p>Your Role signals what you're built to do on the battlefield, and determines which Trial you must pass at Tier thresholds. Choose a role that matches your planned Skills and playstyle.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-name">⚔ Warrior</div>
+          <div class="stat-desc">Frontline tank. Uses Guard effects to redirect attacks aimed at allies. Built around HP and Armor. Essential for protecting the team.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">🗡 Assassin</div>
+          <div class="stat-desc">Single-target threat elimination. High Accuracy and Movement. Prioritizes dangers and strikes before falling back.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">💥 Destroyer</div>
+          <div class="stat-desc">Area damage powerhouse. Clears weak enemies while damaging untouched ones and weakening clusters for follow-up.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">✶ Support</div>
+          <div class="stat-desc">Healing, buffing, and purging negative effects. Monitors ally HP and conditions throughout every fight.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-name">⛓ Disabler</div>
+          <div class="stat-desc">Crowd control specialist. Strips Poise, roots enemies, and creates openings for assassins and destroyers.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Character Sheet -->
+    <section class="content-section" id="character-sheet">
+      <h2>Character Sheet</h2>
+      <p>TSR character sheets have two parts: the <strong>Social Sheet</strong> (personality, appearance, history) and the <strong>Combat Sheet</strong> (all mechanical values). Both are required for character submission.</p>
+
+      <h3>Combat Sheet — Required Fields</h3>
+      <ul>
+        <li><strong>Name</strong> — Used for Transaction posts when buying Spells, Techniques, and Equipment.</li>
+        <li><strong>Level</strong> — Starts at 1.</li>
+        <li><strong>Role</strong> — Your combat function (see above).</li>
+        <li><strong>Starting Boon</strong> — Your chosen Boon from the Boons list.</li>
+        <li><strong>Attributes</strong> — HP / Stamina / Mana after spending your 20 Attribute Points.</li>
+        <li><strong>Stats</strong> — Str / Dex / Vig / Min / Wil after spending your 6 Stat Points.</li>
+        <li><strong>Skills</strong> — Which skills you've invested your 3 Skill Points into.</li>
+        <li><strong>Equipment</strong> — Weapons, armor, and other purchased gear.</li>
+        <li><strong>Money</strong> — Remaining Silver after purchases (start with 500).</li>
+        <li><strong>Techniques &amp; Spells</strong> — Readied (within slot limit) and Learned.</li>
+        <li><strong>Reference Section</strong> — Parry, Armor, Ward, Movement, and attacks pre-calculated.</li>
+      </ul>
+
+      <div class="callout">
+        <h4 style="color:var(--gold);font-family:var(--font-heading);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;">Copy &amp; Paste Fillable Sheet</h4>
+        <pre style="font-family:var(--font-body);font-size:0.82rem;color:var(--muted);line-height:1.8;white-space:pre-wrap;">Name:
+Attributes: 20 Health / 10 Stamina / 0 Mana
+Level: 1 (0/10 Exp to Level Up)
+Role:
+
+Starting Boon:
+
+Stats:
+  Strength: d4 | Dexterity: d4 | Vigor: d4 | Mind: d4 | Willpower: d4
+
+Skills &amp; Masteries:
+  Rank – Skill
+  Mastery:
+
+Equipment:
+  –
+  Carry Capacity: / | Money: Silver
+
+Readied Techniques: – | Slot Total:
+Learned Techniques: –
+Readied Spells: – | Slot Total:
+Learned Spells: –
+
+— Quick Reference —
+Parry: [2+Half Dex] Base (Guard Stance: +1)
+Resistances: X Armor / Y Ward (Guard Stance: Armor +2)
+Melee Attack: Accuracy: Dex | Damage: Str+WeaponDie (Crit: Str+2×WeaponDie)
+Spell Attack: Accuracy: Mind | Spell Power: Mind+SpellDice
+Movement Speed: 6 Spaces</pre>
+      </div>
+    </section>
+
+    <!-- Leveling -->
+    <section class="content-section" id="leveling">
+      <h2>Leveling Up</h2>
+      <p>Characters earn <strong>10 Experience</strong> to level up. Experience is split among the party after each combat. Fighting enemies 1 Tier below you grants only half XP; 2 Tiers below grants none.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Level</th><th>Gains</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Start</td><td>3 Skill pts · 6 Stat pts · 20 Attr pts</td><td>Character Creation</td></tr>
+          <tr><td>2–3</td><td>+5 Max HP · +5 Attr · +1 Skill · +1 Stat</td><td></td></tr>
+          <tr><td><strong>3</strong></td><td>Tier 1 Trial</td><td>Must pass to earn more XP</td></tr>
+          <tr><td>4</td><td>+5 Max HP · +5 Attr · +1 Skill · <strong>+2 Stat</strong></td><td>Bonus Stat point at 4</td></tr>
+          <tr><td>5–6</td><td>+5 Max HP · +5 Attr · +1 Skill · +1 Stat</td><td></td></tr>
+          <tr><td><strong>6</strong></td><td>Tier 2 Trial</td><td>Must pass to earn more XP</td></tr>
+          <tr><td>7</td><td>+5 Max HP · +5 Attr · +1 Skill · <strong>+2 Stat</strong></td><td>Bonus Stat point at 7</td></tr>
+          <tr><td>8–9</td><td>+5 Max HP · +5 Attr · +1 Skill · +1 Stat</td><td></td></tr>
+          <tr><td><strong>9</strong></td><td>Tier 3 Trial</td><td>Must pass to earn more XP</td></tr>
+          <tr><td>10</td><td>+5 Max HP · +5 Attr · +1 Skill · <strong>+2 Stat</strong></td><td>Max Level</td></tr>
+          <tr><td><strong>Awakening</strong></td><td>+5 Max HP · +5 Attr · <strong>+2 Stat</strong></td><td>Final Trial — not a level up</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Step by Step -->
+    <section class="content-section" id="step-by-step">
+      <h2>Step-by-Step Creation</h2>
+
+      <div class="perk-list">
+        <div class="perk-item">
+          <div class="perk-name">Step 1 — Start with Your Vision</div>
+          <div class="perk-desc">Write down what you already know: your character's name, concept, fighting style. Even just "Level 1" is a start. Having a clear archetype (mighty axe-fighter, delicate duelist, blazing mage) speeds everything else up.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Step 2 — Choose Skills &amp; Role</div>
+          <div class="perk-desc">Pick your Role and spend your 3 Skill Points. Each skill has been designed with a specific archetype in mind. CQC + Endurance suits warriors; Anima + Spellcrafting suits blasters; Figment + Martial Arts suits tricksters.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Step 3 — Set Attributes &amp; Stats</div>
+          <div class="perk-desc">Fighters prioritize Stamina and Str/Dex. Casters prioritize Mana and Mind/Willpower. Tanks want HP and Vigor. Spend your 6 Stat Points and 20 Attribute Points accordingly.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Step 4 — Choose Equipment, Spells &amp; Techniques</div>
+          <div class="perk-desc">Browse the Items List, Spells, and Techniques with your 500 Silver. You can only ready Techniques up to your max Stamina in slots, and Spells up to your max Mana. Plan your loadout carefully.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Step 5 — Pick Your Boon &amp; Run the Numbers</div>
+          <div class="perk-desc">Choose a Starting Boon from the Boons page, then calculate: Parry (2+Half Dex), Armor (Half Vig−2), Ward (Half Wil−2), Accuracy (Dex die), Damage (Str + weapon die). Revise if needed, then submit for review.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">TSR · The Silver Road</span>
+      <span class="footer-version">Handbook v5.0</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

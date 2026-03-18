@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combat Guide — TSR Player's Handbook</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+
+  <nav class="topnav">
+    <div class="nav-brand">
+      <span class="brand-tsr">TSR</span>
+      <span class="brand-sub">The Silver Road</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="combat.html" class="active">Combat</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="boons.html">Boons</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>›</span> Combat Guide
+    </div>
+
+    <div class="page-hero">
+      <p class="page-eyebrow">Chapter II</p>
+      <h1 class="page-title">Combat Guide</h1>
+      <p class="page-lead">Everything you need to survive — and dominate — the battlefield.</p>
+    </div>
+
+    <nav class="toc">
+      <h4>Contents</h4>
+      <ul>
+        <li><a href="#flow">Flow of Combat</a></li>
+        <li><a href="#actions">Actions &amp; Reactions</a></li>
+        <li><a href="#attacking">Attacking</a></li>
+        <li><a href="#magic">Casting Magic</a></li>
+        <li><a href="#damage">Damage &amp; Resistances</a></li>
+        <li><a href="#conditions">Negative Conditions</a></li>
+        <li><a href="#crowd-control">Crowd Control Effects</a></li>
+        <li><a href="#dots">Damage Over Time</a></li>
+        <li><a href="#recovery">Recovery &amp; Stances</a></li>
+        <li><a href="#terrain">Terrain &amp; Environment</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+      </ul>
+    </nav>
+
+    <!-- Flow of Combat -->
+    <section class="content-section" id="flow">
+      <h2>Flow of Combat</h2>
+
+      <h3>Before Combat</h3>
+      <p>All participants roll their <strong>Dexterity</strong> (+ modifiers) for initiative. The highest initiative acts first. Ties are broken by the higher Dexterity stat die.</p>
+      <p>Before the first round, all combatants may take one <strong>Free Interact Action</strong> (draw up to 2 pieces of equipment) and one <strong>Pre-Battle Action</strong> (self-buff, terrain spell, potion, or guard stance — nothing that targets, damages, or moves enemies).</p>
+
+      <h3>The Player Turn</h3>
+      <p>Each turn has an <strong>Upkeep Phase</strong> followed by your <strong>3 Actions</strong>.</p>
+
+      <div class="perk-list">
+        <div class="perk-item">
+          <div class="perk-name">Upkeep Phase</div>
+          <div class="perk-desc">Pay costs for active self-buffs, roll to Break Free from persistent CCs, count down duration effects, and roll DoT damage (unless you Cleanse on your first action).</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">3 Actions</div>
+          <div class="perk-desc">Spend your 3 Actions in any combination: Attack, Cast, Move, Interact, etc. Free Actions do not cost anything and can even be used outside your turn.</div>
+        </div>
+      </div>
+
+      <h3>The Enemy Phase</h3>
+      <p>When enemies act, you have <strong>1 Reaction</strong> to defend yourself: Defensive Actions (dodge/block), Counter Attacks (Guard Stance required), or Reactive Spells.</p>
+    </section>
+
+    <!-- Actions -->
+    <section class="content-section" id="actions">
+      <h2>Actions &amp; Reactions</h2>
+
+      <table class="styled-table">
+        <thead><tr><th>Action</th><th>Cost</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attack</strong></td><td>1 Action</td><td>Strike with your equipped weapon. MAP applies to subsequent attacks.</td></tr>
+          <tr><td><strong>Cast a Spell</strong></td><td>2 Actions (default)</td><td>Cast a spell; cost varies by spell. Self-buff spells cost 1 Action.</td></tr>
+          <tr><td><strong>Move</strong></td><td>1 Action</td><td>Move up to 30ft (6 spaces). Subsequent moves each turn are halved.</td></tr>
+          <tr><td><strong>Step</strong></td><td>1 Action</td><td>Move 5ft without provoking an Attack of Opportunity. Requires standing.</td></tr>
+          <tr><td><strong>Sustain</strong></td><td>1 Action</td><td>Keep a Concentration effect active for another round.</td></tr>
+          <tr><td><strong>Hold</strong></td><td>2 Actions</td><td>Prepare 1 Action with a declared trigger; fires outside your turn.</td></tr>
+          <tr><td><strong>Interact</strong></td><td>1 Action</td><td>Draw/stow/swap items, pick up, pass items, reload, use an alchemical item.</td></tr>
+          <tr><td><strong>First Aid</strong></td><td>2 Actions</td><td>Recover Vigor die + Half Vigor in HP; purge a DoT from self or adjacent ally. Provokes AoO.</td></tr>
+          <tr><td><strong>Catch Breath</strong></td><td>1 Action</td><td>Recover Stamina = Vigor die + Half Vigor.</td></tr>
+          <tr><td><strong>Meditate</strong></td><td>1 Action</td><td>Recover Mana = Willpower die + Half Willpower.</td></tr>
+          <tr><td><strong>Guard Stance</strong></td><td>1 Action</td><td>+1 Parry, +2 Armor. Enables Counter Attacks. Required to use Protect.</td></tr>
+          <tr><td><strong>Release</strong></td><td>Free</td><td>Drop item or release one hand off a 2-Handed weapon. Works off-turn.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Reactions (Enemy Phase)</h3>
+      <p>You have <strong>1 Reaction</strong> per enemy phase. If you successfully <strong>Dodge</strong> all attacks in a phase (or Block taking 0 HP damage on the first hit), your Reaction is refunded.</p>
+
+      <div class="callout">
+        <strong>Attack of Opportunity:</strong> Triggered when an enemy moves through your melee reach, stands from Prone, makes a Ranged Attack, casts a Spell, or Interacts with an object. Requires CQC Adept, Relentless, or Overwatch. Taking AoO damage interrupts spellcasting and object interactions.
+      </div>
+    </section>
+
+    <!-- Attacking -->
+    <section class="content-section" id="attacking">
+      <h2>Attacking</h2>
+
+      <p>Roll your <strong>Accuracy</strong> die (Dex for physical, Mind for spells) + modifiers versus the target's <strong>Parry</strong>. If your roll ≥ Parry, the attack hits. Then check your damage against their Armor or Ward.</p>
+
+      <h3>Multiple Attack Penalty (MAP)</h3>
+      <p>Each attack after the first in your player phase incurs a penalty:</p>
+      <ul>
+        <li>1st attack — no penalty</li>
+        <li>2nd attack — <strong>−5 Accuracy</strong></li>
+        <li>3rd attack — <strong>−10 Accuracy</strong></li>
+      </ul>
+      <p>MAP does <em>not</em> apply to Attacks of Opportunity or Counter Attacks.</p>
+
+      <h3>Critical Hits</h3>
+      <p>When your Accuracy roll exceeds the target's Parry by <strong>4 or more</strong>, you score a Critical Hit. Roll <strong>one extra weapon die</strong> and add it to damage. Spells cannot crit unless stated otherwise.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Quality</th><th>Crit Bonus</th></tr></thead>
+        <tbody>
+          <tr><td>Standard</td><td>+1 weapon die</td></tr>
+          <tr><td>Deadly</td><td>+1 weapon die, +weapon die max value</td></tr>
+          <tr><td>Fatal</td><td>All weapon dice (incl. crit die) increase one step in size</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Attack Enhancers</h3>
+      <p>A maximum of <strong>2 Attack Enhancers</strong> (or 2 Spell Enhancers) may be used per attack phase. They persist for all attacks in that phase.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Enhancer</th><th>Cost</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Power Attack</td><td>2–4 Stamina</td><td>+1 to +2 Damage (every 2 Stamina = +1 Dmg)</td></tr>
+          <tr><td>Take Aim</td><td>2–4 Stamina</td><td>+1 to +2 Accuracy</td></tr>
+          <tr><td>Quick Jabs</td><td>4 Stamina</td><td>+2 Accuracy — Fist Weapons only</td></tr>
+          <tr><td>Rapid Lunge</td><td>4 Stamina</td><td>+2 Accuracy — One-handed melee, offhand empty</td></tr>
+          <tr><td>Homing Spell</td><td>4 Mana</td><td>+2 Accuracy — Spell Enhancer, requires catalyst</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Offensive Martial Stances</h3>
+
+      <div class="perk-list">
+        <div class="perk-item">
+          <div class="perk-name">Dual Strike — 2 Actions</div>
+          <div class="perk-desc">Attack twice at current MAP (MAP only increases after both strikes). Dual Wielding required. −2 Accuracy if either weapon lacks Finesse.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Vicious Strike — 2 Actions</div>
+          <div class="perk-desc">Strike once, add Strength twice to damage. Two-Handed Melee only. Counts as 2 attacks for MAP.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Cleave — 2 Actions</div>
+          <div class="perk-desc">Strike in a wide AoE around you (weapon reach radius). Two-Handed Melee only. Counts as 2 attacks for MAP.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Reckless Tossout — 2 Actions</div>
+          <div class="perk-desc">Attack at half throwing range, dealing Strength dice damage — bypasses Parry entirely. Counts as 2 attacks for MAP. No enhancers.</div>
+        </div>
+      </div>
+
+      <h3>Grabs &amp; Grappling</h3>
+      <p>Use <strong>2 Actions</strong> and hit Parry to initiate a Grab. Instead of damage, make a <strong>Strength vs. Vigor</strong> check; success applies <strong>Bind</strong>. Spend another Action to escalate to a Hold:</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Hold</th><th>Immediate Effect</th><th>Ongoing</th></tr></thead>
+        <tbody>
+          <tr><td>Chokehold</td><td>Unarmed die as Stamina damage</td><td>—</td></tr>
+          <tr><td>Pin Down</td><td>Inflict Prone</td><td>Use both hands to attack in subsequent turns</td></tr>
+          <tr><td>Leg Hold</td><td>2 stacks of Cripple</td><td>Cripple stacks double each turn; Slow on break</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Magic -->
+    <section class="content-section" id="magic">
+      <h2>Casting Magic</h2>
+      <p>Spells cost <strong>2 Actions</strong> by default (self-buffs: 1 Action). You need <strong>at least one free hand</strong> to cast — unless you've learned Touch Magic or a hands-free technique.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Spell Rank</th><th>Mana Cost</th><th>Slot Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Novice</td><td>2 Mana</td><td>2 Slots</td></tr>
+          <tr><td>Adept</td><td>4 Mana</td><td>3 Slots</td></tr>
+          <tr><td>Master</td><td>8 Mana</td><td>4 Slots</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        Casting with <strong>one free hand</strong> grants −1 Mana cost to all spells. Self-buff spells go into your <strong>Concentration Slot</strong> — only one magical self-buff at a time.
+      </div>
+
+      <h3>Spell Range</h3>
+      <p>Base spell range = <strong>2</strong>. Each point of Mind and each point of Willpower both add <strong>+1</strong> to your spell range.</p>
+
+      <h3>Touch Magic</h3>
+      <p>Advanced battlemage technique. Pour a spell through a weapon attack (2 Actions total), using either weapon accuracy or spell accuracy as the delivery. Requires specialized training. Only works on single-target spells with a casting cost of 2 or fewer actions.</p>
+
+      <h3>Summoning</h3>
+      <p>Summons require <strong>1 Action per turn</strong> to command, granting the summon <strong>2 Actions</strong>. Swarm Summons follow group orders only. Effective command range: full visible battlefield (~500ft). Summons take your Concentration slot.</p>
+    </section>
+
+    <!-- Damage -->
+    <section class="content-section" id="damage">
+      <h2>Damage &amp; Resistances</h2>
+
+      <h3>Armor &amp; Ward</h3>
+      <ul>
+        <li><strong>Armor (Physical Resistance)</strong> = Half Vigor − 2 + equipment bonuses</li>
+        <li><strong>Ward (Magical Resistance)</strong> = Half Willpower − 2 + equipment bonuses</li>
+      </ul>
+      <p>If damage exceeds the matching resistance, only the excess deals HP damage.</p>
+
+      <h3>Damage Shields</h3>
+      <p>A secondary HP pool that absorbs all incoming damage until broken. Damage Shields do <em>not</em> cause Downstate when depleted. Cap = 5 at d4 Vigor, +5 per upgrade. DoTs bypass Damage Shields (except Acid, which targets them first).</p>
+
+      <h3>Armor Penetration (AP)</h3>
+      <p>AP ignores physical resistance points up to its value, and adds that value directly to damage against Damage Shields. Cannot reduce resistance below 0. Does not work against resistance gained from blocking.</p>
+
+      <h3>Primary vs Secondary Damage</h3>
+      <ul>
+        <li><strong>Primary Damage</strong>: the main physical hit (or spell hit); boosted by Primary Damage stat.</li>
+        <li><strong>Secondary Damage</strong>: enchantments, Touch Magic, resins carried through the Primary. Max 3 sources. One main source gets full modifiers; extras get halved.</li>
+        <li><strong>Spell Power</strong>: boosts spell damage and Mind-based attacks.</li>
+      </ul>
+
+      <h3>Effective Damage</h3>
+      <p>When a weapon or spell type matches a target's weakness, all attack <em>dice</em> are maximized. Crit extra dice are also maximized; Deadly crits also maximize the Stat die.</p>
+    </section>
+
+    <!-- Negative Conditions -->
+    <section class="content-section" id="conditions">
+      <h2>Negative Conditions</h2>
+
+      <table class="styled-table">
+        <thead><tr><th>Condition</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Exhaustion</strong></td><td>Stamina = 0; lose 1 Action per turn until ≥1 Stamina recovered.</td></tr>
+          <tr><td><strong>Stagger</strong></td><td>−3 Accuracy and Primary Damage for the remainder of the current turn. Applied by AoO on a moving target.</td></tr>
+          <tr><td><strong>Fumble</strong></td><td>Roll next Save vs. CC with Disadvantage. Lasts 2 rounds, consumed on use.</td></tr>
+          <tr><td><strong>Rend</strong></td><td>−3 Physical Resistance for 2 rounds. Cannot stack or go negative.</td></tr>
+          <tr><td><strong>Agony</strong></td><td>−3 Magical Resistance for 2 rounds. Cannot stack or go negative.</td></tr>
+          <tr><td><strong>Manashock</strong></td><td>Removes magical self-buffs, augments, and active summons.</td></tr>
+          <tr><td><strong>Silence</strong></td><td>Unable to cast any magic.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Crowd Control -->
+    <section class="content-section" id="crowd-control">
+      <h2>Crowd Control Effects</h2>
+      <p>CC is split into <strong>Physical CC</strong> (resisted by Vigor) and <strong>Magical CC</strong> (resisted by Willpower). Applying CC uses an <em>opposed roll</em> — aggressor's relevant stat vs. defender's resistance stat. Equal = defender wins.</p>
+      <p>Once applied, targets may <strong>Break Free</strong> at the start of their turn, rolling their resistance vs. a target of <em>2 + Half Attacker's Stat</em>. Each failed attempt adds a cumulative <strong>+2</strong> bonus to subsequent attempts.</p>
+
+      <table class="styled-table">
+        <thead><tr><th>Effect</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>Stun</td><td>Physical</td><td>Lose 1 Action on the following turn.</td></tr>
+          <tr><td>Paralysis</td><td>Physical</td><td>Cannot act until broken. 1 round immunity after breaking.</td></tr>
+          <tr><td>Root</td><td>Physical</td><td>Cannot Move for 1 round (unless stated otherwise).</td></tr>
+          <tr><td>Slow</td><td>Physical</td><td>Movement Speed halved for 1 round.</td></tr>
+          <tr><td>Bind</td><td>Physical</td><td>Tethered to source; can only move toward source. Bound unit has Disadvantage on attacks.</td></tr>
+          <tr><td>Prone</td><td>Physical</td><td>Disadvantage on Accuracy. Melee attacks vs. Prone = Advantage. Ranged = Disadvantage. Speed = 5ft. Stand costs 1 Action.</td></tr>
+          <tr><td>Fear</td><td>Magical</td><td>Lose 1 Action on the following turn.</td></tr>
+          <tr><td>Daze</td><td>Magical</td><td>2× resource cost on next defensive action. Lasts 1 turn.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Stability</strong>: Each stack negates the first CC effect without a Save, consuming the stack. Max 3 stacks at once.<br/>
+        <strong>Poise</strong>: Immune to all CC (auto-resist, consumes 1 Poise stack). Passive Glancing on all incoming attacks. When Poise breaks, the unit gains Rend + Agony. Boss mechanic.
+      </div>
+    </section>
+
+    <!-- DoTs -->
+    <section class="content-section" id="dots">
+      <h2>Damage Over Time</h2>
+      <p>DoT damage bypasses all Armor and Ward. The only way to stop it is <strong>Cleansing</strong> (First Aid or relevant abilities) used as your first action in the DoT Phase. Stacks are consumed in a <em>half-life</em> pattern: half of total stacks trigger per tick (round up).</p>
+
+      <table class="styled-table">
+        <thead><tr><th>DoT</th><th>Damage</th><th>Trigger</th><th>Special</th></tr></thead>
+        <tbody>
+          <tr><td>Poison</td><td>1d6/stack</td><td>Start of target's turn (1 stack)</td><td>Halves all healing received</td></tr>
+          <tr><td>Bleed</td><td>1d6/stack</td><td>Start of target's turn (half stacks)</td><td>—</td></tr>
+          <tr><td>Searing</td><td>1d8/stack</td><td>Start of target's turn (half stacks)</td><td>+1 stack when re-applied</td></tr>
+          <tr><td>Acid</td><td>1d4/stack</td><td>Start of target's turn (half stacks)</td><td>Targets Damage Shields first; prevents new shields</td></tr>
+          <tr><td>Cripple</td><td>1d6/stack</td><td>When target moves or is forcibly moved (half stacks)</td><td>Grapple movement doesn't trigger</td></tr>
+          <tr><td>Confusion</td><td>1d8/stack</td><td>When target attacks or casts a spell (half stacks)</td><td>—</td></tr>
+          <tr><td>Aggravate</td><td>—</td><td>Instantly triggers ALL DoT effects on application</td><td>Apply DoT first, then Aggravate resolves</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Recovery -->
+    <section class="content-section" id="recovery">
+      <h2>Recovery &amp; Resting</h2>
+
+      <div class="perk-list">
+        <div class="perk-item">
+          <div class="perk-name">Long Rest (≈6 hours)</div>
+          <div class="perk-desc">Full recovery of HP, Stamina, Mana, and all Wounds. All status effects cleared (unless stated otherwise).</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Short Rest</div>
+          <div class="perk-desc">50% recovery of max attributes. Each party member may recover 1 Wound. Only specifically stated injuries/status effects are cleared.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Wounds</div>
+          <div class="perk-desc">Each time a character is Downed, they gain a Wound (−5 Max HP, min 5 HP). Wounds persist until a Short or Long Rest.</div>
+        </div>
+        <div class="perk-item">
+          <div class="perk-name">Downstate</div>
+          <div class="perk-desc">At 0 HP: cannot act, all self-buffs/augments drop, gain 1 Wound. If HP drops to negative equal to current Max HP — Unconscious (out of combat). Heal to ≥1 HP to rejoin the fight.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terrain -->
+    <section class="content-section" id="terrain">
+      <h2>Terrain &amp; Environment</h2>
+
+      <table class="styled-table">
+        <thead><tr><th>Terrain</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Plains / Floor</td><td>No penalties.</td></tr>
+          <tr><td>Walls</td><td>Full Cover, blocks line of sight. 0 Parry, cannot crit. 30 HP.</td></tr>
+          <tr><td>Trees / Pillars</td><td>Difficult terrain. Partial Cover (+1 Parry when standing at).</td></tr>
+          <tr><td>Shallow Water</td><td>Difficult terrain (2× movement cost).</td></tr>
+          <tr><td>Barbed</td><td>Difficult terrain. 1 stack of Bleed per tile crossed.</td></tr>
+          <tr><td>Burning Debris</td><td>Difficult terrain. 1d12 fire + 1 stack of Searing per tile.</td></tr>
+          <tr><td>Noxious</td><td>Difficult terrain. 1 stack of Poison per tile.</td></tr>
+          <tr><td>Prismatic</td><td>Difficult terrain. 1 stack of Confusion per tile.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Flanking:</strong> When you and at least 1 ally are on opposite sides of an enemy (within 5ft), that enemy is flanked. +1 Accuracy per flanking pair (max +4 with 4 pairs).
+      </div>
+
+      <h3>Flying</h3>
+      <p>Flying units ignore terrain effects (positive and negative), but suffer <strong>weakness to ranged physical and wind damage</strong>. Landing or taking flight costs 1 Free Action per turn, and hovering incurs a <strong>−3 penalty to ranged attack range</strong>. Taking primary effective damage while hovering causes a fall (50 spaces/turn until a Hard Dex check succeeds).</p>
+
+      <h3>Falling Damage</h3>
+      <p>Falling 1 space (5ft) = no damage. Each space fallen beyond 10ft deals <strong>1d8 + X</strong> (X = number of spaces above 10) physical damage.</p>
+    </section>
+
+    <!-- Glossary -->
+    <section class="content-section" id="glossary">
+      <h2>Glossary</h2>
+
+      <table class="styled-table">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td>Advantage</td><td>Roll twice, take higher result.</td></tr>
+          <tr><td>Disadvantage</td><td>Roll twice, take lower result. Cancels one Advantage.</td></tr>
+          <tr><td>Glancing</td><td>Halved damage after resistances. 2-round cooldown on reactive uses.</td></tr>
+          <tr><td>Reflect</td><td>Bounces Projectiles back without taking damage.</td></tr>
+          <tr><td>Pierce</td><td>Ignores Glancing and Damage Cancellation.</td></tr>
+          <tr><td>True Hit</td><td>Ignores effects that prevent critical hits.</td></tr>
+          <tr><td>Haste</td><td>Cancels effects that prevent Attacks of Opportunity.</td></tr>
+          <tr><td>Brave</td><td>Grants additional Actions. Does not stack with other Brave effects.</td></tr>
+          <tr><td>Dispel</td><td>Destroys active magical terrain/constructs. Cannot affect Summons or self-buffs (use Manashock for those).</td></tr>
+          <tr><td>Guard</td><td>Allow a nearby unit to redirect hits toward you. Downed guarded units require 2 Unguardable hits to fail a death save.</td></tr>
+          <tr><td>Unguardable</td><td>Bypasses Guard effects; attacks the target directly. All AoEs are Unguardable.</td></tr>
+          <tr><td>Unblockable</td><td>Cannot be met with Defensive Actions; only passive resistances apply.</td></tr>
+          <tr><td>Stacks</td><td>Multiple instances of an effect that accumulate (e.g., Bleed stacks).</td></tr>
+          <tr><td>Temporary Points</td><td>Temporary boosts to HP/Stamina/Mana; lost permanently when spent; don't raise the cap.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">TSR · The Silver Road</span>
+      <span class="footer-version">Handbook v5.0</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

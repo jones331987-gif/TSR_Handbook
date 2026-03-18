@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — TSR Player's Handbook</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+
+  <nav class="topnav">
+    <div class="nav-brand">
+      <span class="brand-tsr">TSR</span>
+      <span class="brand-sub">The Silver Road</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="combat.html">Combat</a></li>
+      <li><a href="skills.html" class="active">Skills</a></li>
+      <li><a href="boons.html">Boons</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>›</span> Skills
+    </div>
+
+    <div class="page-hero">
+      <p class="page-eyebrow">Chapter III</p>
+      <h1 class="page-title">Skills</h1>
+      <p class="page-lead">Skill trees define what your character can do. Click any skill to expand its details.</p>
+    </div>
+
+    <div class="callout" style="margin-bottom:2.5rem;">
+      <strong>Skill Points:</strong> Start with 3. Gain 1 per level up. Ranks: <strong>Novice</strong> (1 pt) · <strong>Adept</strong> (2 pts) · <strong>Master</strong> (3 pts). You must learn lower-rank spells/techniques in a line before learning higher ones.
+    </div>
+
+    <!-- Physical Skills -->
+    <section class="content-section">
+      <h2>⚔ Physical Skills</h2>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Close Quarters Combat (CQC)</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Governs melee armaments using Strength and Dexterity. Unlocks Techniques at each rank.</p>
+          <ul>
+            <li><strong>Adept:</strong> Proficiency with all CQC weapons. Can now perform Attacks of Opportunity. If AoO deals HP damage, Reaction is refunded.</li>
+          </ul>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Brute</div>
+              <div class="perk-desc">Use Strength instead of Dexterity to determine Accuracy with Melee weapons.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Crush Armor</div>
+              <div class="perk-desc">First melee attack has AP equal to half your Strength. Critical hits also apply Rend.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Lethality</div>
+              <div class="perk-desc">Dealing HP damage with a Melee Weapon applies 2 stacks of Bleed. Aggravate on a Crit.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Marksmanship</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Governs ranged armaments (bows, crossbows, firearms, throwing weapons) using Strength and Dexterity.</p>
+          <ul>
+            <li><strong>Adept:</strong> Proficiency with all Marksmanship weapons.</li>
+          </ul>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Eagle Eye</div>
+              <div class="perk-desc">Use Dexterity for damage with Ranged Weapons. On crit, add an extra Dex die instead of a weapon die.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Overwatch</div>
+              <div class="perk-desc">Perform Attacks of Opportunity with Ranged Weapons at half effective range. Enhancers cost double when used this way.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Barbed Shots</div>
+              <div class="perk-desc">Ranged HP damage applies 2 Bleed stacks. Aggravate on crit.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Endurance</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Hone your body to trade blows in melee and wear armor more effectively.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Endure Pain</div>
+              <div class="perk-desc">Spend Stamina during a defensive phase to cancel damage: every 2 Stamina = 1 damage cancelled. Cap: 10 per phase.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Landshark</div>
+              <div class="perk-desc">Use Techniques and receive Light Armor bonuses even while wearing Heavy Armor.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Punishing Draw</div>
+              <div class="perk-desc">The first attack of your player phase always has +2 Primary Damage and +2 Accuracy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Martial Arts</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Governs martial maneuvers and battlefield control techniques.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Style Master</div>
+              <div class="perk-desc">Use 3 Attack Enhancers per phase instead of 2. The most expensive enhancer costs 2×. 2-round cooldown.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Enduring Warrior</div>
+              <div class="perk-desc">+10 to maximum Damage Shield cap. At the start of Upkeep, automatically regain 5 Damage Shields.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Disciplined Fighter</div>
+              <div class="perk-desc">Halve the cost of 1 Attack Enhancer each time you declare an attack phase.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Tactics</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>The art of command and positional analysis. Buff allies, read the battlefield, and outmaneuver foes.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Tactical Genius</div>
+              <div class="perk-desc">Cast 1 Tactics buff as a Free Action each turn, but at +2 Stamina cost.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Perfect Positioning</div>
+              <div class="perk-desc">Gain 1 stack of Stability at the start of your Upkeep Phase, for free.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Outnumbered Positioning</div>
+              <div class="perk-desc">When attacked, redirect the first hit toward another nearby enemy (making it Guard you). Once per defensive phase, costs 4 Stamina.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Savagery</h3>
+          <span class="skill-tag">Physical</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Lose yourself in primal fury, letting ancient instincts take over. Raw power over finesse.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Primal Mass</div>
+              <div class="perk-desc">Use Vigor instead of Strength for melee attack damage.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Warrior's Ichor</div>
+              <div class="perk-desc">When you deal HP damage in an attack phase, transfer the last negative condition applied to you onto your target (using your own modifiers for the Save).</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Savage Fighting</div>
+              <div class="perk-desc">Parry bonuses from Unarmored Fighting also add to Primary Damage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Magic Skills -->
+    <section class="content-section">
+      <h2>✦ Magic Skills</h2>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Spellcrafting</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Manipulate arcane energy with precision. Unlocks powerful magic Techniques and foundational spell mastery.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Blessing of Mana</div>
+              <div class="perk-desc">Each time you cast a spell, roll a Mana Blessing check (d20, 11+). On success, your next spell costs 0 Mana. 1-round cooldown after activation.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Find Familiar</div>
+              <div class="perk-desc">Bond with a chosen summon. It no longer uses your Concentration slot, you gain a free action to command it exclusively, and its range extends to 1 mile.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Wizard</div>
+              <div class="perk-desc">Learn and slot spells from schools you haven't invested in. Use Spellcrafting skill for scaling. +2 slot cost penalty. Training spells cannot be learned this way.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Anima Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Elemental Anima magic: Fire, Water, Earth, Air, and Lightning. Harness the raw forces of nature.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Energy</div>
+              <div class="perk-desc">+5 Mana. Grants the Redirect spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Domination</div>
+              <div class="perk-desc">Sustained spells cost 1 less Mana per round. Unlocks Anima Touch Magic.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Magnitude — Elemental Soul</div>
+              <div class="perk-desc">Attune to a single element for major bonuses, but lose access to all other element types. Choose from: <em>Infernal · Aqua · Terra · Vacuum · Thunderous Soul</em>.</div>
+            </div>
+          </div>
+          <h4>Elemental Souls:</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">🔥 Infernal Soul</div>
+              <div class="perk-desc">All flame hits deal +1d6 fire secondary damage. +1 Searing stack on application. Absorb/extinguish small fires.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">💧 Aqua Soul</div>
+              <div class="perk-desc">Water hits deal 1d8 Stamina damage. Control water state. Breathe underwater.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">🪨 Terra Soul</div>
+              <div class="perk-desc">Use Strength for Earth spell accuracy and damage. Cast Earth spells via Touch Magic. Grant 10 Damage Shields on Earth cast (excess goes to an ally).</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">🌪 Vacuum Soul</div>
+              <div class="perk-desc">Wind damage knocks back 2 spaces. Sacrifice damage for Accuracy. Fly at base movement +2.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">⚡ Thunderous Soul</div>
+              <div class="perk-desc">Static aura: Lightning spells and Lightning-enchanted weapons gain the Fatal quality.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Void Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Manipulation of space, distance, and arcane displacement.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Arcane Spirit</div>
+              <div class="perk-desc">+5 Mana. Grants the Drifter's Sheathe spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Arcane Order</div>
+              <div class="perk-desc">Sustained spells cost 1 less Mana per round. Unlocks Void Touch Magic.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Arcane Chaos</div>
+              <div class="perk-desc">+2 spaces to Teleportation, Forced Movement, Range Enhancers, and effective spell range for all Void spells.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Holy Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Divine light magic. Effective against Creatures of Darkness. Prevents regeneration in affected creatures until Short Rest.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Holy Might</div>
+              <div class="perk-desc">+5 Mana. Grants Mitotic Regeneration spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Angelic Radiance</div>
+              <div class="perk-desc">Cast Holy spells via Touch Magic. Create CQC and Marksmanship weapons with Manifest Relic / Manifest Angelic Relic spells.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Divine Mind</div>
+              <div class="perk-desc">Spend a 3rd Action on a Holy spell to empower it — increases magnitude and can affect up to 4 targets.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Thaumaturgy</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Magic of artifice and constructed power. Thaumic weapons and constructs.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Thaumic Battery</div>
+              <div class="perk-desc">+5 Mana. Grants the Replicate Magic Item spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Thaumic Might</div>
+              <div class="perk-desc">Successful Thaumic weapon hits generate Damage Shields equal to the weapon's damage die. Create CQC and Marksmanship weapons via Manifest Weapons / Manifest Ethereal Weapons.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Thaumic Power</div>
+              <div class="perk-desc">Maintain 2 self-buffs in 1 Concentration slot (Master + Adept max). Both can be cast in the same Pre-Battle action. +2 to all resource costs while active.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Figment Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Illusion, stealth, and mind-bending deception. Manipulate perception and plant shadows in enemy minds.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Shadow Thief</div>
+              <div class="perk-desc">+5 Mana. Grants the Shadow God's Fingers spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Diplomat</div>
+              <div class="perk-desc">Cast Figment spells stealthily (enemy can't see it and can't defensive action). Costs 3 Actions.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Conqueror</div>
+              <div class="perk-desc">All Figment debuffs become 10ft radius targeted AoEs. +1 magnitude to all Figment spells and +1 to their stack applications.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Dark Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Elder power and shadowed sorcery. Effective against creatures of light and summons. Includes summon manipulation.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Sorcerer</div>
+              <div class="perk-desc">+5 Mana. Grants the Empathy spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Hexer</div>
+              <div class="perk-desc">Sustained spells cost 1 less Mana per round. Cast Elder spells via Touch Magic.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Necromancer</div>
+              <div class="perk-desc">All summons gain 5 Damage Shields on summoning. Summon attacks deal +1d6 Dark secondary damage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-header">
+          <h3>Nature Magic</h3>
+          <span class="skill-tag">Magic</span>
+          <span class="skill-card-toggle">▾</span>
+        </div>
+        <div class="skill-card-body">
+          <p>Draw power from the living world — beasts, growth, and primal earth-force.</p>
+          <h4>Master Perks (choose 1):</h4>
+          <div class="perk-list">
+            <div class="perk-item">
+              <div class="perk-name">Druidcraft</div>
+              <div class="perk-desc">+5 Mana. Grants the Polymorph spell.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Nature's Wrath</div>
+              <div class="perk-desc">Sustained spells cost 1 less Mana per round. Cast Nature spells via Touch Magic.</div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-name">Soulbeast</div>
+              <div class="perk-desc">Merge with a summoned Nature animal (uses Concentration slot). Gain extra stats and unique abilities from the merged animal. All attacks count as Flanking while merged.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crafting -->
+    <section class="content-section">
+      <h2>⚙ Crafting Skills</h2>
+      <div class="callout">
+        <strong>Artificing</strong> — Coming Soon. This skill tree will cover the creation and modification of weapons, armor, and magical items.
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">TSR · The Silver Road</span>
+      <span class="footer-version">Handbook v5.0</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

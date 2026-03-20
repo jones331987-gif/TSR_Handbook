@@ -264,7 +264,43 @@
     <!-- ══ THE WILDLANDS ═══════════════════════════════════════ -->
     <div class="nation-panel" id="panel-wildlands">
       <div class="nation-header">
-        <div class="nation-sigil">🐺</div>
+        <div class="nation-sigil" style="padding:6px; background:transparent; border-color: rgba(201,168,76,0.35);">
+          <!-- Helm of Kaldra — Fifth Dawn set symbol recreation (outline style) -->
+          <svg viewBox="0 0 80 88" xmlns="http://www.w3.org/2000/svg" width="66" height="72" aria-label="Helm of Kaldra — Fifth Dawn symbol">
+            <g fill="none" stroke="var(--gold)" stroke-linejoin="round" stroke-linecap="round">
+
+              <!-- ── Three crown prongs ── -->
+              <!-- Left horn: sweeps out-left then narrows to tip -->
+              <polyline stroke-width="3" points="22,32 14,18 20,16 26,4 30,16 36,20"/>
+              <!-- Centre spike -->
+              <polyline stroke-width="3" points="36,20 38,10 40,2 42,10 44,20"/>
+              <!-- Right horn -->
+              <polyline stroke-width="3" points="44,20 50,16 54,16 60,4 66,16 72,18 58,32"/>
+
+              <!-- ── Helm dome outline ── -->
+              <path stroke-width="3"
+                d="M22,32 C14,36 10,44 10,54 L10,66 C10,68 12,70 14,70
+                   L22,70 L22,78 C22,80 24,82 26,82 L54,82
+                   C56,82 58,80 58,78 L58,70 L66,70
+                   C68,70 70,68 70,66 L70,54
+                   C70,44 66,36 58,32 Z"/>
+
+              <!-- ── Visor slit (eye slot) — open rectangle, no fill ── -->
+              <rect stroke-width="2.5" x="18" y="48" width="44" height="10" rx="4"/>
+
+              <!-- ── Nasal bar down centre ── -->
+              <line stroke-width="2.5" x1="40" y1="58" x2="40" y2="82"/>
+
+              <!-- ── Brow ridge bar above visor ── -->
+              <line stroke-width="2.5" x1="14" y1="45" x2="66" y2="45"/>
+
+              <!-- ── Chin-guard flare lines at base ── -->
+              <line stroke-width="2" x1="22" y1="82" x2="16" y2="88"/>
+              <line stroke-width="2" x1="58" y1="82" x2="64" y2="88"/>
+
+            </g>
+          </svg>
+        </div>
         <div class="nation-title-block">
           <h2>The Wildlands</h2>
           <div class="nation-subtitle">Nothrón and the Far North · Tribal Society</div>
@@ -579,7 +615,7 @@
         </div>
 
         <div class="event-item">
-          <div class="event-nation">🐺 The Wildlands</div>
+          <div class="event-nation">⛨ The Wildlands</div>
           <p>A memorial is held for <strong>King Sigurd the Dragonslayer</strong> of Nothrón — a beloved king who brought prosperity, maintained southern trade routes, defeated northern threats, and resolved a famine crisis with a new crop. His legacy is immense.</p>
           <p>His successor, his daughter <strong>Queen Brynhildr the Goldwyrm</strong>, faces immediate difficulty. Young and inexperienced, she led a rash raid on Wild Hunt settlements in an attempt to unify the tribes under her banner once and for all. The overreach left Nothrón exposed and yielded nothing — a bitter return to the throne, marked by lost troops, resources, and the trust of her people. Much work lies ahead.</p>
         </div>

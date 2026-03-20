@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the World — TSR Player's Handbook</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Lore-specific styles ───────────────────────────────── */
+    .nation-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .nation-tab {
+      font-family: var(--font-heading);
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nation-tab:hover { border-color: var(--gold); color: var(--parchment); }
+    .nation-tab.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    .nation-panel { display: none; animation: fadePanel 0.3s ease; }
+    .nation-panel.active { display: block; }
+    @keyframes fadePanel {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .nation-header {
+      display: flex; align-items: flex-start; gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .nation-sigil {
+      flex-shrink: 0;
+      width: 90px; height: 90px;
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      background: rgba(201,168,76,0.05);
+    }
+    .nation-title-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .nation-subtitle {
+      font-family: var(--font-heading);
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .nation-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .nation-tag {
+      font-family: var(--font-heading);
+      font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--gold-dim);
+      padding: 0.15rem 0.55rem;
+    }
+
+    .lore-section { margin-bottom: 3rem; }
+    .lore-section h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .lore-section h3 .section-icon { color: var(--gold-dim); font-size: 0.9rem; }
+    .lore-section h4 {
+      font-family: var(--font-heading);
+      font-size: 0.88rem; color: var(--parchment);
+      letter-spacing: 0.06em; margin: 1.5rem 0 0.6rem;
+    }
+    .lore-section p { color: var(--parchment); margin-bottom: 1rem; line-height: 1.85; }
+
+    .faction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem; margin-top: 1rem;
+    }
+    .faction-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.4rem;
+      position: relative;
+    }
+    .faction-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+    }
+    .faction-card.gold::before   { background: var(--gold); }
+    .faction-card.red::before    { background: var(--crimson-light); }
+    .faction-card.blue::before   { background: #4a90d9; }
+    .faction-card.purple::before { background: #a855f7; }
+    .faction-card.green::before  { background: #7dcea0; }
+    .faction-card.grey::before   { background: #7a6a55; }
+    .faction-name {
+      font-family: var(--font-heading);
+      font-size: 0.85rem; color: var(--gold);
+      letter-spacing: 0.06em; margin-bottom: 0.5rem;
+    }
+    .faction-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* Recent Events page */
+    .events-grid { display: flex; flex-direction: column; gap: 0; }
+    .event-item {
+      border-left: 2px solid var(--border);
+      padding: 0 0 2.5rem 2rem;
+      position: relative;
+    }
+    .event-item::before {
+      content: '';
+      position: absolute; left: -5px; top: 6px;
+      width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+    }
+    .event-item:last-child { padding-bottom: 0; border-left-color: transparent; }
+    .event-nation {
+      font-family: var(--font-heading);
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold-dim);
+      margin-bottom: 0.4rem;
+    }
+    .event-item p { color: var(--parchment); font-size: 0.92rem; line-height: 1.8; margin-bottom: 0.6rem; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.05rem;
+      background: rgba(201,168,76,0.04);
+    }
+
+    @media (max-width: 600px) {
+      .nation-header { flex-direction: column; gap: 1rem; }
+      .nation-sigil { width: 64px; height: 64px; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="vignette"></div>
+
+  <nav class="topnav">
+    <div class="nav-brand">
+      <span class="brand-tsr">TSR</span>
+      <span class="brand-sub">The Silver Road</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="getting-started.html">Getting Started</a></li>
+      <li><a href="combat.html">Combat</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="boons.html">Boons</a></li>
+      <li><a href="world.html" class="active">World</a></li>
+    </ul>
+    <button class="nav-toggle">☰</button>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>›</span> About the World
+    </div>
+
+    <div class="page-hero">
+      <p class="page-eyebrow">Chapter V</p>
+      <h1 class="page-title">About the World</h1>
+      <p class="page-lead">Six nations. One precious resource. An age of steel, sorcery, and simmering conflict.</p>
+    </div>
+
+    <!-- Nation Tabs -->
+    <div class="nation-tabs" role="tablist">
+      <button class="nation-tab active" data-tab="ashen">The Ashen Lords</button>
+      <button class="nation-tab" data-tab="wildlands">The Wildlands</button>
+      <button class="nation-tab" data-tab="republic">The Republic</button>
+      <button class="nation-tab" data-tab="heaven">Kingdom of Heaven</button>
+      <button class="nation-tab" data-tab="glass">Children of Glass</button>
+      <button class="nation-tab" data-tab="melistead">Melistead</button>
+      <button class="nation-tab" data-tab="events">Recent Events</button>
+    </div>
+
+    <!-- ══ THE ASHEN LORDS ══════════════════════════════════════ -->
+    <div class="nation-panel active" id="panel-ashen">
+      <div class="nation-header">
+        <div class="nation-sigil">⚜</div>
+        <div class="nation-title-block">
+          <h2>The Ashen Lords</h2>
+          <div class="nation-subtitle">The Vesperian Confederation · Feudal Kingdom</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Feudal</span>
+            <span class="nation-tag">Anti-Magic</span>
+            <span class="nation-tag">Knightly Orders</span>
+            <span class="nation-tag">Treatise of Ash</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>Many different small fiefs compose the greater united confederation of the Ashen Lords, and as such, many walks of life can be found within their ranks. Some sport dark hair and olive skin, others pale complexion and lighter tones. What truly sets people apart is not the colour of their skin, but the colour of their banner. Knights who have taken the Ashen Vow are often distinguished by their exceptionally muscular, striated physique.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>The war-torn lands of the Ashen Lords never truly knew prosperity before the rule of the first King Goldstein — a man who achieved the impossible by uniting the clans. The Goldstein throne brought an era of peace, managing the long-standing blood feud between the great houses of Azuros and Carmine, and allowing smaller houses to exist with some measure of parity.</p>
+        <p>The Goldsteins were always deeply fixated on finding God, Heaven, and Eden. This obsession drove the first Crusades — and with them, the creation of the Templar order. The Templars journeyed to the Glass Desert seeking Eden and harvesting Celestial Tears, returning to the Goldsteins with vast fortunes of Dust.</p>
+        <p>That fortune proved to be the throne's undoing. King Arthur Goldstein's fascination with the beyond became a fanaticism, and Dust — stripped of its divine properties — opened pathways to the abyss. Arthur became a demon, unleashing horrors into the world. It was the Templars themselves, armed with <em>Ash</em> — a substance that was the antithesis of Dust — who brought him down, with the aid of House Azuros.</p>
+        <p>House Carmine, who had watched and waited, emerged fresh after the battle. Their political maneuvering secured the surviving Goldstein princess as a bride to the Carmine heir, and with that marriage came leverage over the Treatise of Ash — the iron document that to this day governs the use of Dust, mages, and power across all the Ashen Lords.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⛪</span> Religion</h3>
+        <p>Dust is divine — a forbidden fruit that brings mortals dangerously close to the power of God. But that proximity invites the whisper of the Devil. The faithful believe it was hubris, not divinity, that corrupted King Arthur. That is why the Vow of Ash exists: to guard the people from those who wander too close, and to keep blades within reach should a mage slip too far.</p>
+
+        <div class="callout">
+          <strong>The Vow of Ash:</strong> The candidate enters a sealed chamber with Ash salts, an Ash candle, and Ash tea. They breathe the fumes, drink the brew, and wash with the salts for the candle's full duration. This process destroys any existing Dust circuits in the body — and permanently blocks new ones from forming. In return, those who complete the Vow develop extraordinary physical strength, speed, and endurance.
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🏰</span> The Four Great Houses</h3>
+        <div class="faction-grid">
+          <div class="faction-card gold">
+            <div class="faction-name">House Goldstein · The Crown</div>
+            <div class="faction-desc">Rulers in name, diminished in practice. Obsessed with Dust research while their heirs are required to take the Vow of Ash. Constantly skirting the Treatise's limits, to the irritation of the Templars.</div>
+          </div>
+          <div class="faction-card red">
+            <div class="faction-name">The Templars · The Church Militant</div>
+            <div class="faction-desc">Puritan anti-magic zealots. Creators of Ash. Their lands are lethal for any traveling mage. Known to burn witches and employ horrific Ash-forged abominations called Stigmatas and Penitents.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">House Azuros · The Lions</div>
+            <div class="faction-desc">Honor, duty, glory. The oldest house. Adhere to the Treatise strictly. Though mages are treated humanely in their lands, Azuros warfare is proudly non-magical — a matter of tradition and pride.</div>
+          </div>
+          <div class="faction-card grey">
+            <div class="faction-name">House Carmine · The Opportunists</div>
+            <div class="faction-desc">Rose from nothing; secured everything through timing and leverage. Of questionable reputation. Known for keeping mages as battlefield tools — or pets. Their current power stems largely from their founding baron's cold calculation during the Cataclysm.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ THE WILDLANDS ═══════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-wildlands">
+      <div class="nation-header">
+        <div class="nation-sigil">🐺</div>
+        <div class="nation-title-block">
+          <h2>The Wildlands</h2>
+          <div class="nation-subtitle">Nothrón and the Far North · Tribal Society</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Tribal</span>
+            <span class="nation-tag">Primordials</span>
+            <span class="nation-tag">Druidic</span>
+            <span class="nation-tag">Giants & Beastkin</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>There are two kinds of Wildlanders. The <strong>Aesir</strong> are giants — 9 to 12 feet tall, with immense strength, lighter hair and skin, capable of wrestling wild beasts with bare hands. The <strong>Vanir</strong> are more human in stature but possess animal characteristics: tails, ears, unusual eyes, teeth, or skin tones that manifest seemingly at random. The Vanir are typically far more magically gifted than their Aesir counterparts, with druidic aptitude apparent from childhood.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>The Wildlanders record their history in oral tradition — sagas sung by giant skalds, often exaggerated to mythic proportions. The world they inhabit is a land of giant beasts, magical flora, and Primordials: colossal entities that are the living flesh of the gods themselves, capable of changing entire ecosystems with a single breath. Their passing brings catastrophe, but also Dust-blessed rebirth.</p>
+        <p>Long ago, two brothers — Thor and Loki — survived the destruction of their clan by a Primordial. Driven by grief and vengeance, they journeyed north, gathering followers and hunting the beast. Their wandering camp grew into a fortress, a city, and eventually the seat of the Crown of the North. When the Primordial returned, they held their ground and drove it back — a victory that cemented their legend.</p>
+        <p>The story ends in shadow: only Thor returned from the final hunt, carrying his hammer and his brother's broken bow. He killed one of Loki's men in a rage that none had seen before, crowned himself King of the North, and declared the Wildlands under his protection forever. Loki's followers, suspicious and grieving, refused to bow — and their feud with the Throne continues to this day.</p>
+
+        <div class="pull-quote">"Only Thor came back… He climbed back up clutching his hammer, and Loki's broken bow."</div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⛪</span> Religion & Society</h3>
+        <p>The Wildlanders are polytheistic, with a vast pantheon that explains each act of nature as the will of a specific god. Their deeply magical nature — both Aesir and Vanir carry innate power — reinforces their belief that they live in a sacred land blessed like no other. Society is largely meritocratic and tribal: those who provide most value lead. The largest settlements are trading hubs; the greatest of these is the Grand Pass.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⚔</span> Major Factions</h3>
+        <div class="faction-grid">
+          <div class="faction-card gold">
+            <div class="faction-name">The Throne of the Grand Pass</div>
+            <div class="faction-desc">The largest Aesir-ruled settlement, built at a strategic mountain pass. Home of the Crown of the North. Hosts great clan gatherings and is the closest thing the Wildlands has to a capital.</div>
+          </div>
+          <div class="faction-card green">
+            <div class="faction-name">The Druids</div>
+            <div class="faction-desc">Vanir wielders of the wyrding ways, respected even by Firebloods. Hold the secrets of Ember Dust and the Rite of Embers. Born of mother-rites performed over entire lifetimes, Vanir Druids seek to preserve and study nature's bounty.</div>
+          </div>
+          <div class="faction-card red">
+            <div class="faction-name">The Wild Hunt</div>
+            <div class="faction-desc">Raiders who break all taboos. They hunt without limits, prey on the weak, and raid settled communities. Actively hostile to the Crown of the North. Even other Wildlanders consider them beyond the pale.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ THE REPUBLIC ════════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-republic">
+      <div class="nation-header">
+        <div class="nation-sigil">⚙</div>
+        <div class="nation-title-block">
+          <h2>Republic of the Free Cities</h2>
+          <div class="nation-subtitle">The RFC · Industrial Democracy</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Democratic</span>
+            <span class="nation-tag">Magitech</span>
+            <span class="nation-tag">Industrial</span>
+            <span class="nation-tag">Secular</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>People from all walks of life call the Republic home — a place that welcomes anyone hungry for discovery and progress. What sets the Republic's citizens apart is their fashion: striking and revolutionary in the upper city, echoed in a rougher, improvised aesthetic in the lower districts. Above all, the Republic is a place of mixing, of movement, of ambition — and that shows in its people.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>The early Republic coalesced not through war, but through trade agreements and modernization that slowly absorbed city-states, minor kingdoms, and trade federations into a single government. Its early access to Dust came via trade with Melistead for Abyssal Ichor — but demand quickly outpaced supply.</p>
+        <p>The industrial revolution that followed gave the Republic unmatched mobility: magitech engines propelled vehicles across land, sea, and air, enabling rapid globalization. But this progress was built on the backs of an exploited workforce. Crime syndicates, workers' rights movements, and eventually formal political parties rose to challenge the technocrat elite.</p>
+        <p>The Republic eventually charted the Glass Desert, discovering vast Dust reserves. The reality proved brutal — extreme heat, hardened locals, and rival foreign powers made every harvesting operation a grinding conflict. Veterans of those campaigns returned home changed, and formed their own political faction.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⛪</span> Religion & Society</h3>
+        <p>The Republic enforces a hard separation of church and state. Its governing body is a secular democracy that values scientific proof over spirituality, though free worship is permitted within its borders. Society is divided along strict economic lines — the wealthy elite occupy the upper cities, a professional middle class acts as a buffer, and workers at the bottom endure poverty, crime, and neglect.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🏛</span> The Three Parties</h3>
+        <div class="faction-grid">
+          <div class="faction-card blue">
+            <div class="faction-name">People's Workers Party (WP)</div>
+            <div class="faction-desc">Advocates for workers' rights, social aid, and religious freedoms in the lower cities. Strong backing from the Church. Currently holds the presidency under Lady Patriche Dupont — "The Iron Lady of the Masses."</div>
+          </div>
+          <div class="faction-card gold">
+            <div class="faction-name">Future Foundation Party (FFP)</div>
+            <div class="faction-desc">The foundational party of the Republic's identity. Owns major magitech corporations, lobbies for research funding, and develops both privatized conveniences and public-safety technologies. Currently working on an arcane gateway and the controversial Homunculus Project.</div>
+          </div>
+          <div class="faction-card red">
+            <div class="faction-name">National Responsibility Party (NRP)</div>
+            <div class="faction-desc">Gains support during times of global strife. Advocates for military spending, tight immigration controls, and border enforcement. The Republic's army is small — the NRP wants it formidable in technology if not in numbers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ KINGDOM OF HEAVEN ════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-heaven">
+      <div class="nation-header">
+        <div class="nation-sigil">🔥</div>
+        <div class="nation-title-block">
+          <h2>The Kingdom of Heaven</h2>
+          <div class="nation-subtitle">The Eastern Empire · Theocratic Monarchy</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Theocracy</span>
+            <span class="nation-tag">Caste System</span>
+            <span class="nation-tag">Ember Dust</span>
+            <span class="nation-tag">Divine Heir</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>The Kingdom has two major ethnicities: <strong>Firebloods</strong>, who tend toward delicate features, porcelain skin, and amber eyes; and <strong>Ironbloods</strong>, who are rougher-featured with tan skin and dark eyes. Both share very dark hair. The distinction between the two is not merely cosmetic — it defines your place in society entirely.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>In the beginning there were two nations: Iron, forged by endless border warfare, and Fire, blessed by a magical tree that blazed with golden flame and shed Ember Dust crystals — the fruit of divinity. Fire unified swiftly under its noble mages and set out to bring enlightenment to others. Iron refused. War followed, and Iron eventually fell.</p>
+        <p>Ruling the merged nation proved harder than conquering it. The theocracy transformed into a Ministry of noble bureaucrats who studied law rather than magic. Then the Divine Tree spoke — and from within it stepped a being of fire, who told the Ministry about Dust, about Eden, about the Glass Desert. That voice reawakened the Kingdom's fervor, and expeditions were funded to both the Glass Desert and the Melistead archipelago.</p>
+        <p>Generations later, witnessing the Cataclysm of the Ashen Lords, the Divine Tree's flames began to dwindle. The Divine Heir demanded more Dust. Ministry officials who experimented with Dark Magic were executed — heads on pikes at the city gates. The Rite of Embers, a process of total magical awakening, was jealously guarded by noble families and became the ultimate symbol of status and power.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🏛</span> The Caste System</h3>
+        <table class="styled-table">
+          <thead><tr><th>Caste</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Firebloods</strong></td><td>The nobility. Descend from old conquering families. Social standing further defined by magical ability and access to Dust.</td></tr>
+            <tr><td><strong>Ironbloods</strong></td><td>The warrior caste. Military service. The greatest honor is elevation to Fireblood by being granted Dust — reserved only for extraordinary heroes.</td></tr>
+            <tr><td><strong>Stonebloods</strong></td><td>Peasants, merchants, artisans. The commercial bedrock. Rarely rise, though wealthy merchants command respect even in Fireblood circles.</td></tr>
+            <tr><td><strong>Ashbloods</strong></td><td>A punishment caste. Forced to take the Vow of Ash after disgracing a Fireblood. Sent on suicide missions. Short-lived. Considered less than human.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⚔</span> Power Factions</h3>
+        <div class="faction-grid">
+          <div class="faction-card gold">
+            <div class="faction-name">The Ministry</div>
+            <div class="faction-desc">Political rulers. Only the five Masters may enter the Divine Chambers. Each represents a noble province family and must be the finest mage that family can produce. Their word is law.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">The Zodiacs</div>
+            <div class="faction-desc">Twelve legendary Ironblood generals. As the army's access to Dust grew, so did their political influence. The Ministry cannot ignore them — the Zodiacs are the ones who keep the borders and the desert operations running.</div>
+          </div>
+          <div class="faction-card gold">
+            <div class="faction-name">The Diamonds</div>
+            <div class="faction-desc">The merchant lords who control all trade within the Kingdom. Without their vast networks, the Ministry and Zodiacs alike would face crisis. Rumored to skim Dust shipments off the top — quietly, and profitably.</div>
+          </div>
+          <div class="faction-card grey">
+            <div class="faction-name">The Forsaken</div>
+            <div class="faction-desc">The discarded and forgotten: Ashbloods, outlaws, those outside the caste mold. Despite everything, they band together and survive. Perhaps even the Divine Heir has not fully forgotten them.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">✦</span> The Rite of Embers</h3>
+        <p>The truest form of magical awakening that Dust can bring. The Rite opens every single circuit within a person's body to infinite potential — power flows freely from chakra to chakra. The process involves consuming vast amounts of Ember Dust, allowing it to mix with the candidate's blood until their blood is, well and truly, fire.</p>
+        <p>Details of the Rite vary between noble families and are closely guarded, though secrets have a way of slipping out — even to the Republic, whose scientists have attempted to synthesize the process. The Rite is different depending on whether the candidate is a young prodigy groomed from birth, or an older subject whose chakras must be forcibly re-opened.</p>
+      </div>
+    </div>
+
+    <!-- ══ CHILDREN OF GLASS ════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-glass">
+      <div class="nation-header">
+        <div class="nation-sigil">☀</div>
+        <div class="nation-title-block">
+          <h2>The Children of Glass</h2>
+          <div class="nation-subtitle">Banū az-Zujāj · The Glass Desert</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Theocratic</span>
+            <span class="nation-tag">Decentralized</span>
+            <span class="nation-tag">Desert Survival</span>
+            <span class="nation-tag">Celestials</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>The Glassfolk are largely two ethnicities — Orc and Human — mixed for many generations. <strong>Orc Glassfolk</strong> are taller (5'10–6'4), muscular, with rough skin built for desert survival. Those deep in the desert are darker; those near oasis and ports have lighter green tones from intermingling. <strong>Human Glassfolk</strong> are darker-skinned from the intense climate, with rough features, standing 5'4–6' tall, and are characteristically lean — body mass is nearly impossible to maintain in the Glass Desert.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>Life in the Glass Desert has always been an unrelenting struggle. Water, food, survival — every day demands everything. The Glassfolk's history is deeply decentralised, with each village and tribe maintaining its own customs and leaders. True unification has only ever emerged under existential threat.</p>
+        <p>That threat arrived when foreign powers descended on their sands: the Ashen crusaders, the Kingdom of Heaven, the Republic — all seeking Dust with no regard for those who lived there. The deep-desert tribes fight back; the oasis merchants trade. The divide between these two groups defines much of Glassfolk politics.</p>
+
+        <div class="pull-quote">"These sands have seen many come and go, they will see many come and go still… But someday a prophet will unite the ones who dwell upon the sands."</div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⛪</span> Religion</h3>
+        <p>The Children of Glass are monotheistic. They believe in a single creator deity who tempers good people through hardship and rewards them with Dust — the power to see miracles. Even the Celestials that roam the desert are seen as a manifestation of God's divinity, their shed tears becoming the Dust that blesses the land.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🏛</span> Society & Factions</h3>
+        <p>Each community defers to a ruling council of three: a Warrior, a Priest, and an Artisan. The more secular communities near ports and oases are instead ruled by a merchant class with enough knowledge of the desert to guide foreign expeditions — for a price.</p>
+
+        <div class="faction-grid">
+          <div class="faction-card gold">
+            <div class="faction-name">The Procession of Sacred Tears</div>
+            <div class="faction-desc">Deep-desert fundamentalists who worship the Celestials and have spent generations searching for the Oasis of Eden. Masters of survival. Their homes are built into canyon walls to ventilate brutal heat and conserve water. No one knows the Glass Desert better.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">The Bountiful Oasis Coalition</div>
+            <div class="faction-desc">The fringe-dwellers, traders, and merchants. They live comfortably by the ports and oases and sell Dust to foreign powers without the sacred reverence the Procession demands. Seen as "cushy" by deeper-desert kin, but still undeniably Glassfolk.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🗡</span> Desert Gear</h3>
+        <p>Surviving the Glass Desert demands specialized tools and practices. Metal armor heats too quickly to be worn — most armor is made from chitin scavenged from giant desert insectoids, prioritizing speed and ventilation. Weapons favour chitin, bone, wood, and obsidian over metal. Smelting in the desert is impractical.</p>
+        <p>Water is collected via dew-trapping multilayered Dust-woven fabrics that condense night air and funnel moisture into goatskins, or through syringe-like extractors that filter impurities from plants, corpses, and moist soil. The Glassfolk eat a single light meal during the day and a heavier one at night — dates, goat dairy, desert roots, hare, birds, and insects.</p>
+      </div>
+    </div>
+
+    <!-- ══ MELISTEAD ════════════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-melistead">
+      <div class="nation-header">
+        <div class="nation-sigil">🌊</div>
+        <div class="nation-title-block">
+          <h2>The Elves of Melistead</h2>
+          <div class="nation-subtitle">The Isles of Melistead · Absolute Monarchy</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Elves</span>
+            <span class="nation-tag">Isolationist</span>
+            <span class="nation-tag">Abyssal Ichor</span>
+            <span class="nation-tag">Sea Monsters</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">👁</span> Appearance</h3>
+        <p>Melisteads are tall (1.75–2.18m regardless of gender), with pointed ears, pale skin, and eyes and hair in shades of deep ocean blues and greens. Pureblood Melisteads — most common among royalty and nobility — possess all of these traits. Those of mixed heritage may carry only one or two: the eyes, the hair, or simply the pointed ears. All Melistead descendants, regardless of heritage purity, receive the blessing of the gods: underwater, their pointed ears become fish-like fins, their skin takes on a blue tint, and they can breathe, see, and navigate the depths with ease — even using sonar at extreme depths.</p>
+
+        <div class="pull-quote">"Water is fluid, soft and yielding. But water will wear away rock, which is rigid and cannot yield."</div>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">📜</span> History</h3>
+        <p>According to the sacred Balete Tree records, the first Melisteads rose from the ocean depths, born from the blood of Bathala Maykapal after he was wounded by the Bakunawa — a titanic sea serpent and former god who devoured the goddess of the Moon. The Bakunawa's remains became the crescent-shaped islands the elves call home.</p>
+        <p>Their greatest discovery was the Abyssal Ichor — a luminous blue liquid seeping from deep-sea coral beds, exuded by colossal creatures called the Abyssals, who lurk 4,000 to 6,500 metres below the surface. The elves treat the Abyssals as cursed demi-gods and harvest their ichor as both a sacred duty and a source of magical power. Refined into oil, gemstones, or infused into weapons, Abyssal Ichor became the cornerstone of Melistead magic and trade.</p>
+        <p>Contact with the outside world came through an accidental rescue: Prince Timao Lamruil saved a drowning sailor named Taisong and spent years learning his language. When Taisong returned home, his gift of an Aquamarine gemstone ignited an invasion attempt. A single warship survived the supernatural storms protecting the isles — and it was defeated utterly. The diplomatic fallout was a controlled trade agreement: a small amount of Abyssal Ichor, every 100 years, with a strict usage report.</p>
+        <p>The reigning monarch is now <strong>Lakan Xharlion</strong>, first of his name — crowned at 79 (young, by elven reckoning) — alongside his consort, Lord Thalanil of the Gwaelon Family. He has recently opened the archipelago to a limited cultural exchange program for immigrants.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">⛪</span> Religion</h3>
+        <p>Melistead Elves are polytheistic, their faith centered on the myth of creation. <em>Bathala</em> is the title for male deities; <em>Bathaluman</em> for female. The supreme deity is Bathala Maykapal, creator of all. Religious leadership rests with the <strong>Babaylans</strong> — priests and healers — guided by six Elder Babaylans who hold their positions for life. They take no political sides unless a decision contradicts the basic teachings: treat the land with respect, treat people with dignity, and spill blood only to protect the weak.</p>
+      </div>
+
+      <div class="lore-section">
+        <h3><span class="section-icon">🏛</span> Society & Noble Houses</h3>
+        <p>An absolute monarchy, with the Sylaquene royal family seated upon the <em>Neamhnaid</em> — the Throne of Pearl and Sea. The monarch is advised by the An Seanadh (The Assembly): three representatives each from the Maharlika (nobility), Timawa (common people), and Babaylans. Final decisions always rest with the monarch.</p>
+        <div class="faction-grid">
+          <div class="faction-card blue">
+            <div class="faction-name">Gwaelon Family · An Cuan Gorm</div>
+            <div class="faction-desc">Oversees farming. Known for inventing the terrace field system, making use of mountainous terrain to maximize agricultural output.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">Kelpor'ral Family · Draoidheachd Ghorm</div>
+            <div class="faction-desc">Oversees fishermen. Inventors of the Coille Ghorm — sacred-tree boats infused with Abyssal Ichor, the only vessels capable of safely passing the supernatural storms that guard the isles.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">Nhaéslal Family · Tìr an Uisge</div>
+            <div class="faction-desc">Oversees research and development of Abyssal Ichor. Their family first dove to the sea floor and found the coral beds. They ensure no use of Ichor causes spiritual or physical harm.</div>
+          </div>
+          <div class="faction-card blue">
+            <div class="faction-name">Aelorothi Family · Maighstirean Mara</div>
+            <div class="faction-desc">Oversees the warrior class. First to bond with sea monsters (Arael'Sha). To be acknowledged as a Melistead warrior, one must forge an unbreakable bond with an Arael'Sha.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ RECENT EVENTS ════════════════════════════════════════ -->
+    <div class="nation-panel" id="panel-events">
+      <div class="nation-header">
+        <div class="nation-sigil">📰</div>
+        <div class="nation-title-block">
+          <h2>A Summary of Recent Events</h2>
+          <div class="nation-subtitle">An anonymous gathering of current affairs from across the world</div>
+          <div class="nation-tags">
+            <span class="nation-tag">Current Events</span>
+            <span class="nation-tag">All Nations</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-style:italic; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.92rem;">The document below is a gathering of various recent historical events that have shaped multiple nations around the world. This unnamed, anonymous society only wishes to collect and distribute the information of these events for the benefit of the public. We desire no recognition, take no party, and hold no bias.</p>
+
+      <div class="events-grid">
+
+        <div class="event-item">
+          <div class="event-nation">⚙ Republica</div>
+          <p>The <strong>People's Workers Party</strong> has won the most recent elections. Lady Patriche Dupont — "The Iron Lady of the Masses" — has taken office, seen as a welcome reprieve after decades of militarization-focused governance. The previous president, Winchester Higgs, failed to increase Dust extraction in Al-Murah despite deploying new airship technologies and more aggressive conscription campaigns.</p>
+          <p>The <strong>Future Foundation Party</strong> continues its research. Their largest current project is an arcane gateway — a teleportation device for large-scale transportation of goods and personnel. A second project, the <strong>Homunculus Project</strong> by scientist Robert Turing, has created artificial synthetic humans. The homunculi pass no Turing test as yet and remain under extremely limited, closely observed production while political debate rages: abomination, labor force, or military asset?</p>
+        </div>
+
+        <div class="event-item">
+          <div class="event-nation">🐺 The Wildlands</div>
+          <p>A memorial is held for <strong>King Sigurd the Dragonslayer</strong> of Nothrón — a beloved king who brought prosperity, maintained southern trade routes, defeated northern threats, and resolved a famine crisis with a new crop. His legacy is immense.</p>
+          <p>His successor, his daughter <strong>Queen Brynhildr the Goldwyrm</strong>, faces immediate difficulty. Young and inexperienced, she led a rash raid on Wild Hunt settlements in an attempt to unify the tribes under her banner once and for all. The overreach left Nothrón exposed and yielded nothing — a bitter return to the throne, marked by lost troops, resources, and the trust of her people. Much work lies ahead.</p>
+        </div>
+
+        <div class="event-item">
+          <div class="event-nation">⚜ The Ashen Lords</div>
+          <p>Ten years ago, the <strong>Tragedy of Halleck</strong> shook Vesperia. House Halleck — home to one of the most important libraries in the land, and the academy built around it — was destroyed overnight by a suspiciously well-organised bandit army. Duke Azuros launched a furious mountain hunt, hanging poachers and vagrants in his wake and publicly blaming Baron Carmine. Baron Carmine responded with apologies, compensation, and his son Ajax leading a hunt that hanged over 200 bandits. The matter was resolved — though questions linger.</p>
+          <p>More recently, <strong>King Augustus Goldstein's 100th birthday</strong> and Princess Aurelia's 30th birthday (they share the same date) was celebrated in opulent fashion. Lady Hera Carmine sat beside Lady Margott Azuros for the jousting — in which Ajax Carmine went nearly undefeated, until Duke Azuros spectacularly unhorsed him. The King retired early with one of his episodes before the Templar delegation arrived.</p>
+          <p>One month later, <strong>High Chaplain Lidia declared an Inquisition</strong> — responding to reports of demonic activity, unauthorized witchcraft, and violations of the Treatise of Ash. Special Inquisitorial permits are now being granted to select agents. A border dispute between Houses Carmine and Goldstein was resolved quietly before reaching the Council of Lords.</p>
+        </div>
+
+        <div class="event-item">
+          <div class="event-nation">🔥 The Kingdom of Heaven</div>
+          <p>The <strong>Divine Heir woke for the first time in 100 years</strong>, whispering brief words to the Masters of the Ministry. Several motions across the Kingdom were made to reflect their words.</p>
+          <p>Riots in the <strong>Walled City</strong> grow worse daily. More troops are dispatched — to reinforce or suppress, it is unclear. Rumors circulate that a Zodiac has been taken captive inside, or may even be leading the riots.</p>
+          <p>The <strong>Blue Havens</strong> are disrupted by heightened Zodiac activity. Pirates sail freely in those waters, interrupting Dust shipments from the east. Negotiations for truce with House Azuros in No Man's Land have concluded unsuccessfully.</p>
+        </div>
+
+        <div class="event-item">
+          <div class="event-nation">☀ Al-Murah (Glass Desert)</div>
+          <p><strong>High Marshal Hector</strong> takes over as the newest leader of the Templars, launching a new Crusade to find Eden — repeatedly impeded by rival factions.</p>
+          <p>President Winchester Higgs deployed the <strong>first airships in field combat</strong> over the sands of Al-Murah. Air superiority proved insufficient — the prototypes couldn't sustain altitude or flight time. Further development is required before redeployment.</p>
+          <p>Zodiac presence in the region has been reduced in recent months; attention has been drawn to the Walled City and the Blue Havens. The locals continue to hold <strong>Kanly</strong> parleys between factions to determine new borders. The law of Al-Murah is brutal, and those who violate the terms of Kanly are punished swiftly.</p>
+        </div>
+
+        <div class="event-item">
+          <div class="event-nation">🌊 Melistead</div>
+          <p>A new King of Melistead, <strong>Lakan Xharlion</strong>, is crowned for the first time in the first 100 years. His consort, <strong>Lord Thananil</strong>, is publicly recognized at court. Lakan Xharlion's decree accepts a small number of carefully vetted immigrants in a cultural exchange program — the first such opening in living memory. Information flowing in and out of Melistead remains tightly controlled by its natural and supernatural barriers.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /.page-wrap -->
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="footer-brand">TSR · The Silver Road</span>
+      <span class="footer-version">Handbook v5.0</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script>
+    // Nation tab switching
+    document.querySelectorAll('.nation-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.nation-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.nation-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + target).classList.add('active');
+        // Scroll to top of tabs
+        document.querySelector('.nation-tabs').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
+</body>
+</html>
